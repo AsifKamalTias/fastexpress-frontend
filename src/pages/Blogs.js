@@ -6,7 +6,7 @@ import Pagination from "../components/Pagination";
 
 const Blogs = () => {
     const [blogs, setBlogs] = useState([]);
-    const [url, setUrl] = useState('http://127.0.0.1:8000/api/blogs');
+    const [url] = useState('http://127.0.0.1:8000/api/blogs');
     const [paginatedUrl, setPaginatedUrl] = useState('http://127.0.0.1:8000/api/blogs?page=1');
     const [isLoading, setIsLoading] = useState(true);
 
@@ -36,13 +36,13 @@ const Blogs = () => {
                 {isLoading && <Spinner animation="border" variant="success" />}
                 <div className="row">
                     {blogs.map(blog => (
-                        <div className="col-md-6">
-                            <div class="card mb-4">
-                                <div class="card-body">
-                                    <h5 class="card-title">{blog.blog_title}</h5>
-                                    <a href={`/blogs/${blog.id}`} class="btn btn-success mt-3">Read More</a>
+                        <div className="col-md-6" key={blog.id}>
+                            <div className="card mb-4">
+                                <div className="card-body">
+                                    <h5 className="card-title">{blog.blog_title}</h5>
+                                    <a href={`/blog/${blog.id}`} className="btn btn-success mt-3">Read More</a>
                                 </div>
-                                <div class="card-footer text-muted">
+                                <div className="card-footer text-muted">
                                     {blog.updated_at.substring(0, 10)}
                                 </div>
                             </div>
