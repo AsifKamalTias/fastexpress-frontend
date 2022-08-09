@@ -1,9 +1,52 @@
+import { useState } from "react";
+import {Link} from 'react-router-dom';
+import axiosConfig from '../../components/axiosConfig';
+import { Button, Spinner } from "react-bootstrap";
+
 import ClientNav from "../../components/ClientNav";
+import ToastView from "../../components/ToastView";
 
 const GetIn = () => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
+
+    const handleGetIn = (e) => {
+        e.preventDefault();
+        setIsLoading(true);
+        const data = {
+            email,
+            password,
+        };
+        // axios.post('http://127.0.0.1:8000/api/client/getin', data)
+        // .then(success => {
+        //     localStorage.setItem('token', success.data.token);
+        //     setIsLoading(false);
+        //     window.location.href = "/profile";
+        // }).catch(error => {
+        //     setError(error.response.data);
+        //     setIsLoading(false);
+        // }
+        // );
+        axiosConfig.post("client/getin", data)
+        .then(
+            (success)=>{
+                localStorage.setItem('_authToken', success.data.token);
+                setIsLoading(false)
+                window.location.href = '/profile';
+            },
+            (error)=>{
+                setError('Invalid email or password!');
+                setIsLoading(false);
+            }
+        )
+    }
+
     return (
         <>
             <ClientNav></ClientNav>
+            {localStorage.getItem("notification") !== null ? <ToastView message={localStorage.getItem('notification')}></ToastView> : ""}
             <section className="mt-5">
                 <div className="container-fluid h-custom">
                     <div className="row d-flex justify-content-center align-items-center h-100">
@@ -18,23 +61,20 @@ const GetIn = () => {
                             @if(Session()->has('password-changed'))
                                 <p class="text-success">{{Session::get('password-changed')}}</p>
                             @endif */}
+                            {error !== ''? <div className="alert alert-danger">{error}</div>:''}
                             <br/><br/>
-                            <form action="" method="POST">
+                            <form onSubmit={handleGetIn} method="POST">
                                 <div className="form-outline mb-4">
                                     <label className="form-label">Email address</label>
-                                    <input type="email" className="form-control form-control-lg" name="email"
+                                    <input type="email" className="form-control form-control-lg" value={email} onChange={(e)=>{setEmail(e.target.value)}}
                                         placeholder="Enter a valid email address"/>
-                                        {/* @error('email')
-                                        <span class="input-err">{{ $message }}</span>
-                                        @enderror */}
+                                        <span className='input-err'>{error.email? error.email[0]:''}</span>
                                 </div>
                                 <div className="form-outline mb-3">
                                     <label className="form-label">Password</label>
-                                    <input type="password" className="form-control form-control-lg" name="password"
+                                    <input type="password" className="form-control form-control-lg" value={password} onChange={(e)=>{setPassword(e.target.value)}}
                                         placeholder="Enter password" />
-                                        {/* @error('password')
-                                        <span class="input-err">{{ $message }}</span>
-                                        @enderror */}
+                                        <span className='input-err'>{error.password? error.password[0]:''}</span>
                                 </div>
             
                                 <div className="d-flex justify-content-between align-items-center">
@@ -47,14 +87,13 @@ const GetIn = () => {
                                         </label>
                                     </div>
                                     --> */}
-                                    <a href="/" className="text-body">Forgot password?</a>
+                                    <Link to="/client/forgot-pass" className="text-body">Forgot password?</Link>
                                 </div>
             
                                 <div className="text-center text-lg-start mt-4 pt-2">
-                                    <button type="submit" className="btn btn-success btn-lg"
-                                        >Get in</button>
-                                    <p className="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="{{ route('register') }}"
-                                        className="link-danger">Register</a></p>
+                                    <Button className="btn btn-success btn-lg" type="submit" variant="success">{isLoading && <Spinner as="span" className="me-2" animation="border" size="sm" role="status" aria-hidden="true"/>} Get in</Button>    
+                                    <p className="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <Link to="/register"
+                                        className="link-danger">Register</Link></p>
                                 </div>            
                             </form>
                         </div>

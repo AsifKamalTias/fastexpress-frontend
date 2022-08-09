@@ -20,6 +20,7 @@ const ClientRegisterConfirm = (props) =>{
         axios.post('http://127.0.0.1:8000/api/client/register/confirm', data)
         .then(success => {
             localStorage.removeItem('registrationQueue');
+            localStorage.setItem('notification', 'Registration successful');
             setIsLoading(false);
             window.location.href = "/get-in";
         }, (error) => {
@@ -29,9 +30,21 @@ const ClientRegisterConfirm = (props) =>{
 
     }
 
-    const removeRegistrationQueue = () => {
-        localStorage.removeItem('registrationQueue');
-        window.location.href = "/register";
+    const removeRegistrationQueue = (e) => {
+        e.preventDefault();
+        setIsLoading(true);
+        const data = {
+            email
+        };
+        axios.post('http://127.0.0.1:8000/api/client/register/confirm/cancel', data)
+        .then(success => {
+            localStorage.removeItem('registrationQueue');
+            window.location.href = "/register";
+            setIsLoading(false);
+        },(error) => {
+            setError('Something went wrong!');
+            setIsLoading(false);
+        });
     }
 
     return(
@@ -56,7 +69,7 @@ const ClientRegisterConfirm = (props) =>{
                     <br/>
                 </div>
                 <br/>
-                <p className="text-center text-success text-decoration-underline" onClick={removeRegistrationQueue}>Try with different email</p>
+                <p role="button" className="text-center text-success text-decoration-underline" onClick={removeRegistrationQueue}>Try with different email</p>
             </div>
         </>
     );

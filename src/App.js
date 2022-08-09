@@ -10,6 +10,7 @@ import Blogs from './pages/Blogs';
 import Blog from './pages/Blog';
 import Register from './pages/client/Register';
 import GetIn from './pages/client/GetIn';
+import About from './pages/About';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/blog/:id" element={<Blog />} />
           <Route path="/register" element={<Register/>}/>
           <Route path="/get-in" element={<GetIn/>}/>
+          <Route path="/about" element={<About/>} />
           <Route path="/test" element={<Test />} />
           <Route path="/*" element={<div>404</div>} />
         </Routes>
