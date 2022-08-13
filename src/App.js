@@ -11,6 +11,10 @@ import Blog from './pages/Blog';
 import Register from './pages/client/Register';
 import GetIn from './pages/client/GetIn';
 import About from './pages/About';
+import FAQ from './pages/FAQ';
+import HowItWorks from './pages/HowItWorks';
+import TermsConditions from './pages/TermsConditions';
+import Contact from './pages/Contact';
 
 function App() {
   return (
@@ -23,8 +27,13 @@ function App() {
           <Route path="/register" element={<Register/>}/>
           <Route path="/get-in" element={<GetIn/>}/>
           <Route path="/about" element={<About/>} />
+          <Route path="/faq" element={<FAQ/>} />
+          <Route path="/how-it-works" element={<HowItWorks/>} />
+          <Route path="/terms-conditions" element={<TermsConditions/>} />
+          <Route path="/contact" element={<Contact/>} />
           <Route path="/test" element={<Test />} />
           <Route path="/*" element={<div>404</div>} />
+          <Route path="/abort" element={<div>404</div>} />
         </Routes>
       </BrowserRouter>
     </div>
