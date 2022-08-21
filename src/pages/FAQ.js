@@ -1,6 +1,10 @@
+import ClientNav from "../components/ClientNav";
+import Footer from "../components/Footer";
+
 const FAQ = () => {
     return(
         <>
+        <ClientNav></ClientNav>
         <div className="m-5">
         <h1 className="text-center mb-5">Frequently Asked Question</h1>
         <div>
@@ -56,7 +60,8 @@ const FAQ = () => {
               </div>
         </div>
     </div>
-        </>
+    <Footer></Footer>
+    </>
     );
 }
 export default FAQ; 

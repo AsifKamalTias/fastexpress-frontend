@@ -15,6 +15,13 @@ import FAQ from './pages/FAQ';
 import HowItWorks from './pages/HowItWorks';
 import TermsConditions from './pages/TermsConditions';
 import Contact from './pages/Contact';
+import Feedback from './pages/Feedback';
+import Profile from './pages/client/Profile';
+import ProfileEdit from './pages/client/ProfileEdit';
+import ProfileEditPicture from './pages/client/ProfileEditPicture';
+import ProfileEditPassword from './pages/client/ProfileEditPassword';
+import ForgotPassword from './pages/client/ForgotPassword';
+
 
 function App() {
   return (
@@ -26,11 +33,17 @@ function App() {
           <Route path="/blog/:id" element={<Blog />} />
           <Route path="/register" element={<Register/>}/>
           <Route path="/get-in" element={<GetIn/>}/>
+          <Route path="/profile" element={<Profile/>}/>
+          <Route path="/profile/edit" element={<ProfileEdit/>}/>
+          <Route path="/profile/edit/picture" element={<ProfileEditPicture/>}/>
+          <Route path="/profile/edit/password" element={<ProfileEditPassword/>}/>
+          <Route path="client/forgot-pass" element={<ForgotPassword/>}/>
           <Route path="/about" element={<About/>} />
           <Route path="/faq" element={<FAQ/>} />
           <Route path="/how-it-works" element={<HowItWorks/>} />
           <Route path="/terms-conditions" element={<TermsConditions/>} />
           <Route path="/contact" element={<Contact/>} />
+          <Route path="/feedback" element={<Feedback/>} />
           <Route path="/test" element={<Test />} />
           <Route path="/*" element={<div>404</div>} />
           <Route path="/abort" element={<div>404</div>} />

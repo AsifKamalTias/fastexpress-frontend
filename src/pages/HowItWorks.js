@@ -1,6 +1,10 @@
+import ClientNav from "../components/ClientNav";
+import Footer from "../components/Footer";
+
 const HowItWorks = () => {
     return (
         <>
+        <ClientNav></ClientNav>
             <div class="m-5">
                 <h1 class="text-center mb-5">How it works</h1>
                 <div>
@@ -15,6 +19,7 @@ const HowItWorks = () => {
                     </ul>
                 </div>
             </div>  
+            <Footer></Footer>
         </>
     );
     }

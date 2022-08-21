@@ -22,7 +22,7 @@ const Footer = () =>{
                     </div>
                     </div>   
                     <div className="d-flex justify-content-center mt-5">
-                        <Link to="/delivery-man" class="btn btn-success">Join as Deliveryman</Link>
+                        <Link to="/delivery-man" className="btn btn-success">Join as Deliveryman</Link>
                     </div>
                     <hr/>
                     <div className="d-flex justify-content-center text-white mt-3">

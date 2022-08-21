@@ -3,6 +3,7 @@ import {useState, useEffect } from "react";
 import {useParams } from 'react-router-dom';
 import { Spinner } from 'react-bootstrap';
 import ClientNav from "../components/ClientNav";
+import Footer from "../components/Footer";
 
 const Blog = () => {
     
@@ -40,6 +41,7 @@ const Blog = () => {
                 </div>
             </div>
             </div>
+            <Footer></Footer>
         </>
     );
 }

@@ -1,4 +1,6 @@
 import {Link} from 'react-router-dom';
+import DefaultNavLinks from './DefaultNavLinks';
+import LoggedNavLinks from './LoggedNavLinks';
 const ClientNav = () => {
     return (
         <>
@@ -13,12 +15,12 @@ const ClientNav = () => {
                 <li className="nav-item">
                     <Link className="nav-link" aria-current="page" to="/">Home</Link>
                 </li>
-                <li className="nav-item">
-                    <Link className="nav-link" to="/get-in">Get in</Link>
-                </li>
-                <li className="nav-item">
-                    <Link className="nav-link" to="/register">Register</Link>
-                </li>
+               {
+                localStorage.getItem('_authToken') === null ?
+                    <DefaultNavLinks></DefaultNavLinks>
+                    :
+                    <LoggedNavLinks></LoggedNavLinks>
+               }
                 <li className="nav-item">
                     <Link className="nav-link" to="/blogs">Blogs</Link>
                 </li>

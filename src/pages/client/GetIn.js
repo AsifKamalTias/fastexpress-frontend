@@ -5,6 +5,7 @@ import { Button, Spinner } from "react-bootstrap";
 
 import ClientNav from "../../components/ClientNav";
 import ToastView from "../../components/ToastView";
+import Footer from "../../components/Footer";
 
 const GetIn = () => {
     const [email, setEmail] = useState('');
@@ -101,6 +102,7 @@ const GetIn = () => {
                 </div>
                 <br/><br/>
             </section>
+            <Footer></Footer>
         </>
     );
 }

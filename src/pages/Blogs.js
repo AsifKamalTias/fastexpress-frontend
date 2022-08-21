@@ -3,6 +3,7 @@ import axios from 'axios';
 import Spinner from 'react-bootstrap/Spinner';
 import ClientNav from "../components/ClientNav";
 import Pagination from "../components/Pagination";
+import Footer from "../components/Footer";
 
 const Blogs = () => {
     const [blogs, setBlogs] = useState([]);
@@ -51,6 +52,7 @@ const Blogs = () => {
                 </div>
             </div>
             <Pagination url={url} updatePaginatedUrl={changePaginateUrl}/>
+            <Footer></Footer>
         </>
     );
 }
