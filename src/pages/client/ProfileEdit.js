@@ -74,7 +74,7 @@ const ProfileEdit = () =>{
                                                 <h4>{name}</h4>
                                                 <p className="text-secondary mb-1">{address}</p>
                                                 <p className="text-muted font-size-sm">Member since {created.substr(0, 10)}</p>
-                                                <Link className="btn btn-outline-success" to="/profile/edit/picture">Update Profile Picture</Link>
+                                                <Link className="btn btn-outline-success" to="/profile/edit/picture"><i className="bi bi-camera-fill"></i> Update Picture</Link>
                                             </div>
                                         </div>
                                     </div>
@@ -115,7 +115,7 @@ const ProfileEdit = () =>{
                                         <div className="row">
                                             <div className="col-sm-3"></div>
                                             <div className="col-sm-9 text-secondary">
-                                            <Button className="btn btn-success btn-sm" type="submit" variant="success">{isLoading && <Spinner as="span" className="me-2" animation="border" size="sm" role="status" aria-hidden="true"/>} Save</Button> 
+                                            <Button className="btn btn-success btn-sm" type="submit" variant="success" disabled={isLoading}>{isLoading && <Spinner as="span" className="me-2" animation="border" size="sm" role="status" aria-hidden="true"/>} Save</Button> 
                                             </div>
                                         </div>
                                         </form>

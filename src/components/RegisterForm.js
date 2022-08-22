@@ -72,7 +72,7 @@ const RegisterForm = () => {
                                         <span className='input-err'>{error.retypePassword? error.retypePassword[0]:''}</span>
                                         <br/><br/>
                                     </div>
-                                    <Button className="code-input" type="submit" variant="success">{isLoading && <Spinner as="span" className="me-2" animation="border" size="sm" role="status" aria-hidden="true"/>} Register</Button>
+                                    <Button className="code-input" type="submit" variant="success" disabled={isLoading}>{isLoading && <Spinner as="span" className="me-2" animation="border" size="sm" role="status" aria-hidden="true"/>} Register</Button>
                                 </form>
                                 <br/>
                                 <p className="small fw-bold mt-2 pt-1 mb-0">Already have an account? <Link to="/get-in" className="link-danger">Get in</Link></p>

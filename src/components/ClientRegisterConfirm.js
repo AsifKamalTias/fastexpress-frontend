@@ -64,7 +64,7 @@ const ClientRegisterConfirm = (props) =>{
                         <label htmlFor="code">Code</label><br/>
                         <input className="code-input" type="text" value={code} onChange={(e)=>{setCode(e.target.value)}} placeholder="Enter code"></input><br/><br/>
                         {/* <button className="btn btn-success" type="submit">Confirm {isLoading && <Spinner as="span" animation="border" size="sm" role="status" aria-hidden="true" /> }</button> */}
-                        <Button type="submit" variant="success">{isLoading && <Spinner as="span" className="me-2" animation="border" size="sm" role="status" aria-hidden="true"/>} Confirm</Button>
+                        <Button type="submit" variant="success" disabled={isLoading}>{isLoading && <Spinner as="span" className="me-2" animation="border" size="sm" role="status" aria-hidden="true"/>} Confirm</Button>
                     </form>
                     <br/>
                 </div>

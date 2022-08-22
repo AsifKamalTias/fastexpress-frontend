@@ -21,6 +21,7 @@ const Feedback = () => {
         axios.post('http://127.0.0.1:8000/api/feedback', data)
         .then(success => {
             setSuccess(true);
+            clearFields();
             setLoading(false);
         }, (error) => {
             setError(error.response.data);
@@ -28,6 +29,12 @@ const Feedback = () => {
            
         });
     }
+
+    const clearFields = () => {
+        setTitle("");
+        setMessage("");
+    }
+
     return(
         <>
             <ClientNav></ClientNav>
@@ -36,24 +43,26 @@ const Feedback = () => {
                     <h1 className="text-center">Feedback</h1>
                 </div>
                 <br/>
-                    {success?
+                {success? 
+                    <div className="mx-auto">
                         <div className="alert alert-success">
-                            <span>Thanks for your feedback.</span>
+                            <span>Thanks for your feedback!</span>
                         </div>
-                        :""
-                    }
+                    </div>
+                    : ""
+                }
                 <br/>
-                <div>
+                <div className="container d-lg-flex justify-content-center">
                     <form method="POST" onSubmit={submitFeedback}>
                         <label htmlFor="feedback-title">Feedback Title</label><br/>
                         <input id="email-field" className="code-input" type="text" value={title} onChange={(e)=>{setTitle(e.target.value)}} placeholder="Title of Feedback"/><br/>
                         {error.title? <span className='input-err'>{error.title[0]}</span> :""}
                         <br/>
                         <label htmlFor="message">Feedback</label><br/>
-                        <textarea id="message-field" className="code-input" value={message} onChange={(e)=>{setMessage(e.target.value)}} placeholder="Enter your feedback"></textarea><br/>
+                        <textarea id="message-field" style={{borderRadius: "5px"}} cols="51" rows="5" value={message} onChange={(e)=>{setMessage(e.target.value)}} placeholder="Enter your feedback"></textarea><br/>
                         {error.message? <span className='input-err'>{error.message[0]}</span> :""}
                         <br/><br/>
-                        <Button className="code-input" type="submit" variant="success">{loading && <Spinner as="span" className="me-2" animation="border" size="sm" role="status" aria-hidden="true"/>} Send</Button>
+                        <Button className="code-input" type="submit" variant="success" disabled={loading}>{loading && <Spinner as="span" className="me-2" animation="border" size="sm" role="status" aria-hidden="true"/>} Send</Button>
                     </form>
                 </div>
                 <br/>

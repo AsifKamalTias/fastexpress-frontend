@@ -28,7 +28,6 @@ const ProfileEditPassword = () => {
             , (err) => {
                 setIsLoading(false);
                 setError(err.response.data);
-                window.location.href = "/profile";
             }
             )
     }
@@ -38,21 +37,23 @@ const ProfileEditPassword = () => {
             <ClientNav></ClientNav>
             <div className="container m-5">
                 <h1 className="text-center">Change Password</h1>
-                <div>
+                <div className="container d-lg-flex justify-content-center mt-5">
                     <form onSubmit={changePassword} method="POST"> 
-                        <div className="form-group">
-                            <label for="new_password">New Password</label>
-                            <input type="password" className="form-control" id="new_password" value={password} onChange={(e)=>{setPassword(e.target.value)}}/>
+                        <div className="">
+                            <label for="new_password">New Password</label><br/>
+                            <input type="password" className="code-input" id="new_password" value={password} onChange={(e)=>{setPassword(e.target.value)}}/><br/>
                             {error.password && <small className="text-danger">{error.password}</small>}
+                            <br/>
                         </div>
                         <br/>
-                        <div class="form-group">
-                            <label for="new_password_confirmation">Confirm Password</label>
-                            <input type="password" className="form-control" id="new_password_confirmation" value={confirmPassword} onChange={(e)=>{setConfirmPassword(e.target.value)}}/>
+                        <div class="">
+                            <label for="new_password_confirmation">Confirm Password</label><br/>
+                            <input type="password" className="code-input" id="new_password_confirmation" value={confirmPassword} onChange={(e)=>{setConfirmPassword(e.target.value)}}/><br/>
                             {error.confirmPassword && <small className="text-danger">{error.confirmPassword}</small>}
+                            <br/>
                         </div>
                         <br/>
-                        <Button className="btn btn-success btn-md mt-3" type="submit" variant="success">{isLoading && <Spinner as="span" className="me-2" animation="border" size="sm" role="status" aria-hidden="true"/>} Update</Button>
+                        <Button className="btn btn-success btn-md" type="submit" variant="success" disabled={isLoading}>{isLoading && <Spinner as="span" className="me-2" animation="border" size="sm" role="status" aria-hidden="true"/>} Update</Button>
                     </form>
                 </div>
             </div>

@@ -67,8 +67,8 @@ const Profile = () => {
                                         <h4>{name}</h4>
                                         <p className="text-secondary mb-1">{address}</p>
                                         <p className="text-muted font-size-sm">Member since {created.substr(0, 10)}</p>
-                                        <Link className="btn btn-success m-1" to="/profile/edit">Edit</Link>
-                                        <button className="btn btn-outline-success" onClick={getOut}>Get out</button>
+                                        <Link className="btn btn-success m-1" to="/profile/edit"><i className="bi bi-vector-pen"></i> Edit</Link>
+                                        <button className="btn btn-outline-success" onClick={getOut}><i className="bi bi-box-arrow-left"></i> Get Out</button>
                                     </div>
                                     </div>
                                 </div>
@@ -85,9 +85,11 @@ const Profile = () => {
                                     </div>
                                     <br>
                                 @endif */}
-                                <h1>Ordered Deliveries</h1>
-                                <a className="btn btn-success m-5" href="{{route('delivery.from')}}"> Make a Delivery </a>
-                                <a href="{{route('profile.deliveries')}}" className="btn btn-success">View Ordered Deliveries</a>
+                                <h1>Order Actions</h1>
+                                <div className="d-grid gap-3 m-5">
+                                    <a className="btn btn-success" type="button" href="/create-delivery"><i className="bi bi-plus-circle"></i> Make a Delivery</a>
+                                    <a className="btn btn-outline-success" type="button" href="/deliveries"><i className="bi bi-card-checklist"></i> Ordered Deliveries</a>
+                                </div>
                             </div>
                             </div>
 

@@ -47,7 +47,6 @@ const GetIn = () => {
     return (
         <>
             <ClientNav></ClientNav>
-            {localStorage.getItem("notification") !== null ? <ToastView message={localStorage.getItem('notification')}></ToastView> : ""}
             <section className="mt-5">
                 <div className="container-fluid h-custom">
                     <div className="row d-flex justify-content-center align-items-center h-100">
@@ -92,7 +91,7 @@ const GetIn = () => {
                                 </div>
             
                                 <div className="text-center text-lg-start mt-4 pt-2">
-                                    <Button className="btn btn-success btn-lg" type="submit" variant="success">{isLoading && <Spinner as="span" className="me-2" animation="border" size="sm" role="status" aria-hidden="true"/>} Get in</Button>    
+                                    <Button className="btn btn-success btn-lg" type="submit" variant="success" disabled={isLoading}>{isLoading && <Spinner as="span" className="me-2" animation="border" size="sm" role="status" aria-hidden="true"/>} Get in</Button>    
                                     <p className="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <Link to="/register"
                                         className="link-danger">Register</Link></p>
                                 </div>            
@@ -103,6 +102,7 @@ const GetIn = () => {
                 <br/><br/>
             </section>
             <Footer></Footer>
+            {localStorage.getItem("notification") !== null ? <ToastView message={localStorage.getItem('notification')}></ToastView> : ""}
         </>
     );
 }

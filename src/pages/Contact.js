@@ -22,12 +22,19 @@ const Contact = () => {
         axios.post('http://127.0.0.1:8000/api/contact', data)
         .then(success => {
             setSuccess(true);
+            clearFields();
             setLoading(false);
         }, (error) => {
             setError(error.response.data);
             setLoading(false);
            
         });
+    }
+
+    const clearFields = () => {
+        setName("");
+        setEmail("");
+        setMessage("");
     }
 
     return (
@@ -39,13 +46,15 @@ const Contact = () => {
             </div>
             <br/>
                 {success? 
-                    <div className="alert alert-success">
-                        <span>Thanks for your message. We will reach you soon!</span>
+                    <div className="mx-auto">
+                        <div className="alert alert-success">
+                            <span>Thanks for your message. We will reach you soon!</span>
+                        </div>
                     </div>
-                    :""
+                    : ""
                 }
             <br/>
-            <div>
+            <div className="container d-lg-flex justify-content-center">
                 <form method="POST" onSubmit={submitContact}>
                     <label htmlFor="email">Name</label><br/>
                     <input id="email-field" class="code-input" type="text" value={name} onChange={(e)=>{setName(e.target.value)}} placeholder="Enter your name"/><br/>
@@ -56,10 +65,10 @@ const Contact = () => {
                     <span className='input-err'>{error.email? error.email[0]:''}</span>
                     <br/>
                     <label htmlFor="message">Message</label><br/>
-                    <textarea id="message-field" class="code-input" name="message" value={message} onChange={(e)=>{setMessage(e.target.value)}} placeholder="Enter your message"></textarea><br/>
+                    <textarea id="message-field" style={{borderRadius: "5px"}} cols="51" rows="5" name="message" value={message} onChange={(e)=>{setMessage(e.target.value)}} placeholder="Enter your message"></textarea><br/>
                     <span className='input-err'>{error.message? error.message[0]:''}</span>
                     <br/><br/>
-                    <Button className="code-input" type="submit" variant="success">{loading && <Spinner as="span" className="me-2" animation="border" size="sm" role="status" aria-hidden="true"/>} Register</Button>
+                    <Button className="code-input" type="submit" variant="success" disabled={loading}>{loading && <Spinner as="span" className="me-2" animation="border" size="sm" role="status" aria-hidden="true"/>} Send</Button>
                 </form>
             </div>
             <br/>

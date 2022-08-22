@@ -22,7 +22,6 @@ import ProfileEditPicture from './pages/client/ProfileEditPicture';
 import ProfileEditPassword from './pages/client/ProfileEditPassword';
 import ForgotPassword from './pages/client/ForgotPassword';
 
-
 function App() {
   return (
     <div>

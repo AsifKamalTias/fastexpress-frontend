@@ -5,10 +5,10 @@ const DefaultNavLinks = () => {
     return(
         <>
             <li className="nav-item">
-                <Link className="nav-link" to="/get-in">Get in</Link>
+                <Link className="btn btn-outline-success me-2 mt-1" to="/get-in"><i className="bi bi-box-arrow-in-right"></i> Get in</Link>
             </li>
             <li className="nav-item">
-                <Link className="nav-link" to="/register">Register</Link>
+                <Link className="btn btn-outline-success me-2 mt-1" to="/register"><i className="bi bi-pen"></i> Register</Link>
             </li>
         </>
     )

@@ -10,6 +10,7 @@ const Blog = () => {
     const { id } = useParams();
     const [blogTitle, setBlogTitle] = useState(null);
     const [blogContent, setBlogContent] = useState(null);
+    // const [createdAt, setCreatedAt] = useState(null);  
     
     const [isLoading, setIsLoading] = useState(true);
     useEffect(() => {
@@ -18,6 +19,7 @@ const Blog = () => {
             .then(response => {
                 setBlogTitle(response.data.blog_title);
                 setBlogContent(response.data.blog_content);
+                // setCreatedAt(response.data.created_at);
                 setIsLoading(false);
             })
             .catch(error => {
@@ -37,6 +39,7 @@ const Blog = () => {
             <div className="row">
                 <div className="col-md-12">
                     <h2 className="text-success mt-5 mb-3">{blogTitle}</h2>
+                    {/* <p><b>{createdAt.substr(0, 10)}</b></p> */}
                     <p>{blogContent}</p>
                 </div>
             </div>
