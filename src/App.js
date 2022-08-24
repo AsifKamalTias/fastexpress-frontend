@@ -22,6 +22,7 @@ import ProfileEditPicture from './pages/client/ProfileEditPicture';
 import ProfileEditPassword from './pages/client/ProfileEditPassword';
 import ForgotPassword from './pages/client/ForgotPassword';
 import MakeDelivery from './pages/client/delivery/MakeDelivery';
+import Deliveries from './pages/client/delivery/Deliveries';
 
 function App() {
   return (
@@ -48,6 +49,7 @@ function App() {
           <Route path="client/forgot-pass" element={<ForgotPassword/>}/>
 
           <Route path="/make-delivery" element={<MakeDelivery/>}/>
+          <Route path="/deliveries" element={<Deliveries/>}/>
 
           
           <Route path="/test" element={<Test />} />
