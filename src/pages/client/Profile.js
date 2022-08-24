@@ -87,7 +87,7 @@ const Profile = () => {
                                 @endif */}
                                 <h1>Order Actions</h1>
                                 <div className="d-grid gap-3 m-5">
-                                    <a className="btn btn-success" type="button" href="/create-delivery"><i className="bi bi-plus-circle"></i> Make a Delivery</a>
+                                    <a className="btn btn-success" type="button" href="/make-delivery"><i className="bi bi-plus-circle"></i> Make a Delivery</a>
                                     <a className="btn btn-outline-success" type="button" href="/deliveries"><i className="bi bi-card-checklist"></i> Ordered Deliveries</a>
                                 </div>
                             </div>
